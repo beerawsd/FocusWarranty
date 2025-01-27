@@ -2,30 +2,30 @@
   "cookies": [
     {
       "name": "CLID",
-      "value": "6368eaa9a593409a88845eb2217e9566.20250127.20260127",
+      "value": "81885f6da2864e5b9d852df5436faf11.20250127.20260127",
       "domain": "www.clarity.ms",
       "path": "/",
-      "expires": 1769489006.864081,
+      "expires": 1769505023.285193,
       "httpOnly": true,
       "secure": true,
       "sameSite": "None"
     },
     {
       "name": "_clck",
-      "value": "t3xa1l%7C2%7Cfsx%7C0%7C1853",
+      "value": "1tur95i%7C2%7Cfsx%7C0%7C1853",
       "domain": ".dpluscrm.com",
       "path": "/",
-      "expires": 1769489006,
+      "expires": 1769505023,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
     },
     {
       "name": "MUID",
-      "value": "0E7CD7B5E31A661A18A1C234E2DD67FF",
+      "value": "0FB871C530BD6D2C23F3644431166C11",
       "domain": ".bing.com",
       "path": "/",
-      "expires": 1771649011.489094,
+      "expires": 1771665023.867189,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
@@ -35,17 +35,17 @@
       "value": "0",
       "domain": ".c.bing.com",
       "path": "/",
-      "expires": 1738557811.489186,
+      "expires": 1738573823.867312,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
     },
     {
       "name": "SRM_B",
-      "value": "0E7CD7B5E31A661A18A1C234E2DD67FF",
+      "value": "0FB871C530BD6D2C23F3644431166C11",
       "domain": ".c.bing.com",
       "path": "/",
-      "expires": 1771649011.489213,
+      "expires": 1771665023.86735,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
@@ -62,10 +62,10 @@
     },
     {
       "name": "MUID",
-      "value": "0E7CD7B5E31A661A18A1C234E2DD67FF",
+      "value": "0FB871C530BD6D2C23F3644431166C11",
       "domain": ".clarity.ms",
       "path": "/",
-      "expires": 1771649012.66815,
+      "expires": 1771665023.951213,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
@@ -75,7 +75,7 @@
       "value": "0",
       "domain": ".c.clarity.ms",
       "path": "/",
-      "expires": 1738557812.668177,
+      "expires": 1738573823.951237,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
@@ -85,27 +85,27 @@
       "value": "0",
       "domain": ".c.clarity.ms",
       "path": "/",
-      "expires": 1737953612.668188,
+      "expires": 1737969623.951247,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
     },
     {
-      "name": "accessToken",
-      "value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzgxMjU4MTMsImlkIjoiVVc5M0VHUjUiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciJ9.MbH8E8sEJJJkAP1jlYXS5RC2-BQbVHSWvsGSzQ5hnA4p3HaB2JM3CpjkBaZm-x4IU-cqQZE8ukqfIbaWXHQdPqNpdVGVLgOCI8jZfUt8TgV_xwIlNTHbxIf_FxrIxsZXnv2ndGa21IVEDRxBe75QqbQh_W7XmeWpSdw5Aaj2VzcEcagfsmqL6yi5ezfVC7dQffhk08O_bayJ1HXQ8Jy9QbyEguoqOJdzKtvDv6pt3JKnzWY9KKrE7AoYk-8GPvqP66QMQY5cZR2_ZdgecTQyFt4SnssW3vcljbHqyI687wfZFR05_0qzMaSjbmr4mPORNj89IV-yVEWpxX5Y9ppTlA",
-      "domain": "warranty-uat.dpluscrm.com",
+      "name": "_clsk",
+      "value": "1aje1s6%7C1737969024575%7C1%7C1%7Co.clarity.ms%2Fcollect",
+      "domain": ".dpluscrm.com",
       "path": "/",
-      "expires": 1739249008,
+      "expires": 1738055424,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
     },
     {
-      "name": "_clsk",
-      "value": "1tttvwg%7C1737953014096%7C2%7C1%7Ck.clarity.ms%2Fcollect",
-      "domain": ".dpluscrm.com",
+      "name": "accessToken",
+      "value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzgxNDE4MjYsImlkIjoiVVc5M0VHUjUiLCJuYW1lIjoiQWRtaW5pc3RyYXRvciJ9.zsMFzCv4LB7FfylWNJSYM7txue6PiabE1UYMmrkJAeMsAhSl4y4Vdj0mFHcMUfAKKRR9LooKepkvpG4s2ygx03BuVyleMe_LIoyIkaLAgafgldZSgekxLQkTKDWJPCEglxbcByhRWP3gyHR4HeYcp6urYZQtGhXPko5VGX2ngyMgwfiG9flq7znfWVWEqGEWkQZ1xQbJNEayQEPN7s63iXn-EwgjJYt0nRzBK9p4x5xfTUkVO3RQW3ddDhn70qyuJPgjmTSeOSUTOY6-KqlST49pW7D7gE27v8kQSp5SQ-QeJnkGCf9am5U0UYvUhDBI5J07ntfX5BEsaCm1Ls-U8Q",
+      "domain": "warranty-uat.dpluscrm.com",
       "path": "/",
-      "expires": 1738039414,
+      "expires": 1739265022,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"

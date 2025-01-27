@@ -13,7 +13,7 @@ setup('authenticate as admin', async ({ page }) => {
   console.log(process.env.USERNAME);
   await page.locator('input[name="password"]').fill(process.env.PASSWORD);
   await page.locator('button[usefor="LOGIN"]').click();
-  await page.waitForURL('https://warranty-uat.dpluscrm.com:14989/');
+  await page.waitForURL('/');
  
   //Assert something 
   //await expect(page.getByRole('button', { name: 'View profile and more' })).toBeVisible();
