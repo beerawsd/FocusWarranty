@@ -2,8 +2,8 @@ import { test, expect } from '@playwright/test';
 import { CreateWarrantyPage } from '../../../pages/CreateRegisterWarranty';
 import { RegisterWarrantyUserData } from '../../../fixtures/RegisterWarrantyUserData';
 import { RegisterWarrantyData} from  '../../../fixtures/RegisterWarrantyData';
-
-
+import { loginAndGetAccessToken, generateWarrantyCode } from '../../../utils/apiHelpers';
+import { log } from '../../../utils/logger';
 
 test.describe("Create Register Warranty",() => {
     let createWarrantyPage;
@@ -12,16 +12,26 @@ test.describe("Create Register Warranty",() => {
         await createWarrantyPage.navigate();
     });
 
-    test.only('TS-CreateRegisterWarranty-008: ตรวจสอบการบันทึกลงทะเบียนรับประกันสินค้า - กรอกข้อมูลครบ, ช่องทางการซื้อขาย = ร้านมือถือ', async ({ page }) => {
+    test.only('TS-CreateRegisterWarranty-008: ตรวจสอบการบันทึกลงทะเบียนรับประกันสินค้า - กรอกข้อมูลครบ, ช่องทางการซื้อขาย = ร้านมือถือ', async ({ page, request}) => {
+        const accessToken = await createWarrantyPage.loginAndGetAccessToken(request);
+        const warrantyNumberCode = await createWarrantyPage.generateWarrantyCode(request, accessToken);
+        // Optionally, you can perform additional checks or log the final output
+        log(`Generated warranty number code: ${warrantyNumberCode}`);
         await expect(page).toHaveURL('https://warranty-uat.dpluscrm.com:20119/warranty-add');
         await createWarrantyPage.fillTelephone(RegisterWarrantyUserData.telephone);
         await createWarrantyPage.pressEnter();
-        await createWarrantyPage.fillWarrantyCode(RegisterWarrantyData.WarrantyCode)
-        await createWarrantyPage.pressEnter();
+        await createWarrantyPage.fillWarrantyCode(warrantyNumberCode)
+        const [responseCode] = await Promise.all([
+            page.waitForResponse(new RegExp('api/v2/admin/serial-number/verify')),
+            createWarrantyPage.pressEnter()
+        ]);
+        const responseData = await responseCode.json();
+        const mobileModel = responseData.result.items[0].mobilebrands[0].mobileModels[0].mobileModelNameTh
+        const productName = responseData.result.items[0].mobilebrands[0].mobileModels[0].products[0].productName
         await page.locator('#mobileModelId').click();
-        await page.locator(`text=${RegisterWarrantyData.MobileModel}`).click();
+        await page.locator(`text=${mobileModel}`).click();
         await createWarrantyPage.clickProductDropdown();
-        await page.locator(`text=${RegisterWarrantyData.Product}`).click();
+        await page.locator(`text=${productName}`).click();
         await createWarrantyPage.clickChannelBuyDropdown(),
         await page.locator(`text=ร้านมือถือ`).click()
         // await createWarrantyPage.clickWarrantyTypeDropdown();
@@ -29,11 +39,9 @@ test.describe("Create Register Warranty",() => {
         // await createWarrantyPage.uploadINV(RegisterWarrantyData.INV);
         // await createWarrantyPage.uploadPackage(RegisterWarrantyData.Package);
         // await createWarrantyPage.clickSubmitButton() 
-
-
     });
 
-    test.only('TS-CreateRegisterWarranty-009: ตรวจสอบการบันทึกลงทะเบียนรับประกันสินค้า - กรอกข้อมูลครบ, ช่องทางการซื้อขาย = ร้านค้าร่วมรายการ', async ({ page }) => {
+    test('TS-CreateRegisterWarranty-009: ตรวจสอบการบันทึกลงทะเบียนรับประกันสินค้า - กรอกข้อมูลครบ, ช่องทางการซื้อขาย = ร้านค้าร่วมรายการ', async ({ page }) => {
         await expect(page).toHaveURL('https://warranty-uat.dpluscrm.com:20119/warranty-add');
         await createWarrantyPage.fillTelephone(RegisterWarrantyUserData.telephone);
         await createWarrantyPage.pressEnter();

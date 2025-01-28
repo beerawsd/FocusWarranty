@@ -1,5 +1,8 @@
 const { expect } = require('@playwright/test');
 const { fileURLToPath } = require('url');
+import * as dotenv from 'dotenv';
+dotenv.config();
+import { log } from '../utils/logger';
 
 class CreateWarrantyPage {
   constructor(page) {
@@ -91,10 +94,44 @@ class CreateWarrantyPage {
 	async clickStoreDropdown(store){
 		await this.storeInput.click(store)
 	}
-
+	async loginAndGetAccessToken(request) {
+		const loginData = {
+		    username: process.env.NAME,
+		    password: process.env.PASSWORD,
+		};
+		const response = await request.post('https://warranty-uat.dpluscrm.com/warranty/abm/api/v2/admin/auth/login', {
+			data: loginData,
+		});
+		const responseData = await response.json();
+		return responseData.result.accessToken;
+	}
+	async generateWarrantyCode(request, accessToken) {
+		const warrantyCodeData = {
+		    categoryCode: "AA",
+		    name: "สีเขียวทะเล",
+		    expireDate: "",
+		    remark: "",
+		    qrCount: 1,
+		};
+		const response = await request.post('http://159.223.74.75:10403/warranty/api/v2/serial-number/focus/generate', {
+			headers: {
+				Authorization: `Bearer ${accessToken}`,
+			},
+			data: warrantyCodeData,
+		});
+		expect(response.status()).toBe(200);
+		const responseData = await response.json();
+		log(responseData.result.items[0].warrantyNumberCode);
+		return responseData.result.items[0].warrantyNumberCode;
+	}
 }
 
 
 module.exports = {
     CreateWarrantyPage,
 };
+
+
+
+
+// Function to generate a warranty code
